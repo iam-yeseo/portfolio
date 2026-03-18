@@ -1,0 +1,54 @@
+<svg width="760" height="760" viewBox="0 0 760 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bodyShade" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(270 220) rotate(44) scale(590)">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.96"/>
+      <stop offset="0.36" stop-color="#E4EDFF" stop-opacity="0.78"/>
+      <stop offset="0.66" stop-color="#D4E4FF" stop-opacity="0.58"/>
+      <stop offset="1" stop-color="#C8DEFF" stop-opacity="0.35"/>
+    </radialGradient>
+
+    <radialGradient id="holoTint" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(560 500) rotate(-143) scale(540)">
+      <stop offset="0" stop-color="#D8BFFF" stop-opacity="0.3"/>
+      <stop offset="0.55" stop-color="#B5E3FF" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="innerGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(430 350) rotate(66) scale(380)">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.66"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="rimLight" x1="153" y1="97" x2="625" y2="664" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#DDE9FF" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#E0C8FF" stop-opacity="0.28"/>
+    </linearGradient>
+
+    <filter id="softBlur" x="177" y="135" width="390" height="265" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+    <filter id="glow" x="80" y="80" width="600" height="600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <circle cx="380" cy="380" r="285" fill="url(#bodyShade)"/>
+  <circle cx="380" cy="380" r="282" fill="url(#holoTint)"/>
+  <circle cx="380" cy="380" r="280" fill="url(#innerGlow)"/>
+  <circle cx="380" cy="380" r="284" stroke="url(#rimLight)" stroke-width="3"/>
+
+  <g filter="url(#softBlur)">
+    <ellipse cx="372" cy="210" rx="153" ry="72" fill="#FFFFFF" fill-opacity="0.7"/>
+  </g>
+
+  <ellipse cx="305" cy="238" rx="110" ry="55" fill="#FFFFFF" fill-opacity="0.4"/>
+  <ellipse cx="272" cy="292" rx="52" ry="36" fill="#FFFFFF" fill-opacity="0.32"/>
+
+  <path d="M136 387C186 328 261 318 321 341" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="4" stroke-linecap="round"/>
+  <path d="M424 589C502 562 565 512 607 445" stroke="#D5C7FF" stroke-opacity="0.38" stroke-width="3.5" stroke-linecap="round"/>
+
+  <g filter="url(#glow)">
+    <circle cx="380" cy="380" r="270" stroke="#BED9FF" stroke-opacity="0.35" stroke-width="10"/>
+  </g>
+</svg>
