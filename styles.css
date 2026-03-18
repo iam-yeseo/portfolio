@@ -2,9 +2,6 @@
   --bg-main: #f6f9ff;
   --ink-strong: #111329;
   --ink-soft: #2c3159;
-  --accent-a: #d6e4ff;
-  --accent-b: #e9ddff;
-  --accent-c: #d9f3ff;
 }
 
 * {
@@ -52,7 +49,6 @@ body {
 .bg-shape {
   filter: blur(28px);
   opacity: 0.65;
-  transform: translateZ(0);
 }
 
 .bg-shape::before {
@@ -99,7 +95,6 @@ body {
   );
   mix-blend-mode: soft-light;
   opacity: 0.55;
-  transform: translateY(20%);
   filter: blur(14px);
   animation: slowWave 26s ease-in-out infinite alternate;
 }
@@ -136,18 +131,33 @@ body {
   display: grid;
   place-items: center;
   z-index: 4;
+  perspective: 900px;
 }
 
-.sphere-wrap {
+/* JS mouse-follow transform target. No keyframe transform here to avoid conflicts. */
+.sphere-scene {
   position: relative;
   width: min(48vw, 31rem);
   aspect-ratio: 1;
-  animation: idleFloat 10s ease-in-out infinite, breathe 7s ease-in-out infinite;
   transform-style: preserve-3d;
   will-change: transform;
 }
 
-.sphere {
+/* Idle animation lives on child element only. */
+.sphere-float {
+  width: 100%;
+  height: 100%;
+  animation: idleFloat 8s ease-in-out infinite;
+}
+
+.sphere-core {
+  width: 100%;
+  height: 100%;
+  animation: breathe 6.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.sphere-image {
   width: 100%;
   height: 100%;
   display: block;
@@ -156,7 +166,7 @@ body {
   pointer-events: none;
 }
 
-.sphere-wrap::after {
+.sphere-scene::after {
   content: "";
   position: absolute;
   left: 10%;
@@ -197,23 +207,23 @@ body {
 
 @keyframes idleFloat {
   0% {
-    transform: translate3d(0, -0.5%, 0);
+    transform: translate3d(0, -1%, 0);
   }
   50% {
-    transform: translate3d(0, 1.3%, 0);
+    transform: translate3d(0, 1.4%, 0);
   }
   100% {
-    transform: translate3d(0, -0.5%, 0);
+    transform: translate3d(0, -1%, 0);
   }
 }
 
 @keyframes breathe {
   0%,
   100% {
-    scale: 1;
+    transform: scale(1);
   }
   50% {
-    scale: 1.017;
+    transform: scale(1.016);
   }
 }
 
@@ -256,7 +266,6 @@ body {
 @media (max-width: 900px) {
   .hero {
     padding: 1.2rem;
-    grid-template-rows: auto 1fr auto;
   }
 
   .hero-title,
@@ -264,7 +273,7 @@ body {
     font-size: clamp(1.75rem, 14vw, 3.7rem);
   }
 
-  .sphere-wrap {
+  .sphere-scene {
     width: min(72vw, 24rem);
   }
 
@@ -274,10 +283,6 @@ body {
 }
 
 @media (max-width: 640px) {
-  .hero {
-    overflow: hidden;
-  }
-
   .meta-row {
     grid-template-columns: 1fr;
     justify-items: center;
